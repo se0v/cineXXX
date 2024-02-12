@@ -10,15 +10,14 @@ class CryptoListBloc extends Bloc<CryptoListEvent, CryptoListState> {
   CryptoListBloc(this.coinsRepository) : super(CryptoListInitial()) {
     on<LoadCryptoList>((event, emit) async {
       try {
-        if (state is! CryptoListLoaded){
+        if (state is! CryptoListLoaded) {
           emit(CryptoListLoading());
         }
         final coinsList = await coinsRepository.getCoinsList();
         emit(CryptoListLoaded(coinsList: coinsList));
       } catch (e) {
         emit(CryptoListLoadingFailure(exception: e));
-      }
-      finally {
+      } finally {
         event.completer?.complete();
       }
     });
@@ -27,38 +26,29 @@ class CryptoListBloc extends Bloc<CryptoListEvent, CryptoListState> {
 }
 
 //crypto_list_state.dart
-abstract class CryptoListState extends Equatable{
-
-}
+abstract class CryptoListState extends Equatable {}
 
 class CryptoListInitial extends CryptoListState {
   @override
   List<Object?> get props => [];
-
 }
 
-class CryptoListLoading extends CryptoListState{
+class CryptoListLoading extends CryptoListState {
   @override
   List<Object?> get props => [];
-
 }
 
-class CryptoListLoaded extends CryptoListState{
-  CryptoListLoaded({
-    required this.coinsList
-  });
+class CryptoListLoaded extends CryptoListState {
+  CryptoListLoaded({required this.coinsList});
 
   final List<CryptoCoin> coinsList;
 
   @override
   List<Object?> get props => [coinsList];
-
 }
 
-class CryptoListLoadingFailure extends CryptoListState{
-  CryptoListLoadingFailure({
-    this.exception
-  });
+class CryptoListLoadingFailure extends CryptoListState {
+  CryptoListLoadingFailure({this.exception});
 
   final Object? exception;
 
@@ -67,13 +57,11 @@ class CryptoListLoadingFailure extends CryptoListState{
 }
 
 //crypto_list_event.dart
-abstract class CryptoListEvent extends Equatable {
-
-}
+abstract class CryptoListEvent extends Equatable {}
 
 class LoadCryptoList extends CryptoListEvent {
   LoadCryptoList({
-      this.completer,
+    this.completer,
   });
 
   final Completer? completer;
@@ -81,4 +69,3 @@ class LoadCryptoList extends CryptoListEvent {
   @override
   List<Object?> get props => [completer];
 }
-

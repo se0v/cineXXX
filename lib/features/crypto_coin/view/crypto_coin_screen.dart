@@ -1,10 +1,20 @@
+import 'package:fluttapp/repositories/crypto_coins/models/descript_film.dart';
 import 'package:flutter/material.dart';
 
 class CryptoCoinScreen extends StatefulWidget {
-  const CryptoCoinScreen({super.key});
+  const CryptoCoinScreen({
+    Key? key,
+    required this.descript,
+  }) : super(key: key);
+
+  final DescriptFilm descript;
 
   @override
   State<CryptoCoinScreen> createState() => _CryptoCoinScreenState();
+
+  Widget build(BuildContext context) {
+    return const Scaffold();
+  }
 }
 
 class _CryptoCoinScreenState extends State<CryptoCoinScreen> {
@@ -30,8 +40,9 @@ class _CryptoCoinScreenState extends State<CryptoCoinScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-      title: Text(coinName ?? 'Coming soon'),
-    ));
+      appBar: AppBar(
+        title: Text(coinName ?? 'Coming soon'),
+      ),
+    );
   }
 }

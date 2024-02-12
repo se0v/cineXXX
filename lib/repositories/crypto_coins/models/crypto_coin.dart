@@ -5,6 +5,8 @@ class CryptoCoin extends Equatable {
     required this.nameRu,
     required this.year,
     required this.posterUrl,
+    required genre,
+    required country,
   });
 
   final String nameRu;

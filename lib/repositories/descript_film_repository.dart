@@ -3,8 +3,8 @@ import 'package:fluttapp/repositories/crypto_coins/abstract_coins_repository.dar
 import 'package:fluttapp/repositories/crypto_coins/models/crypto_coin.dart';
 import 'package:flutter/material.dart';
 
-class CryptoCoinsRepository implements AbstractCoinsRepository {
-  CryptoCoinsRepository({required this.dio});
+class DescriptFilmRepository implements AbstractCoinsRepository {
+  DescriptFilmRepository({required this.dio});
   final Dio dio;
 
   @override
@@ -24,15 +24,16 @@ class CryptoCoinsRepository implements AbstractCoinsRepository {
 
       final cryptoCoinsList = items.map((item) {
         final nameRu = item['nameRu'];
-        final year = item['year'];
+        final genre = item['genre'];
+        final country = item['country'];
         final posterUrl = item['posterUrl'];
 
         return CryptoCoin(
           nameRu: nameRu,
-          year: year,
+          genre: genre,
+          country: country,
           posterUrl: posterUrl,
-          genre: null,
-          country: null,
+          year: 0,
         );
       }).toList();
 
