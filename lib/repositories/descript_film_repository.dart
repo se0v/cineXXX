@@ -24,14 +24,10 @@ class DescriptFilmRepository implements AbstractCoinsRepository {
 
       final cryptoCoinsList = items.map((item) {
         final nameRu = item['nameRu'];
-        final genre = item['genre'];
-        final country = item['country'];
         final posterUrl = item['posterUrl'];
 
         return CryptoCoin(
           nameRu: nameRu,
-          genre: genre,
-          country: country,
           posterUrl: posterUrl,
           year: 0,
         );
